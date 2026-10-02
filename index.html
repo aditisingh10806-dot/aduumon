@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Cutuu ♡</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    background:linear-gradient(135deg,#fff7fa,#ffe8ef,#fff4e8);
+    color:#684552;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* FLOATING HEARTS */
+
+.hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    animation:float 8s linear infinite;
+    opacity:.55;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+
+    20%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* SCREEN */
+
+.screen{
+    min-height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    position:relative;
+    z-index:2;
+}
+
+.screen.active{
+    display:flex;
+}
+
+.container{
+    width:min(650px,100%);
+    text-align:center;
+}
+
+/* TEXT */
+
+h1,h2{
+    font-family:'Playfair Display',serif;
+}
+
+h1{
+    font-size:clamp(45px,12vw,75px);
+    color:#a94f6b;
+    line-height:1.1;
+}
+
+h2{
+    font-size:clamp(32px,8vw,48px);
+    color:#a24f69;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.8;
+}
+
+.subtitle{
+    max-width:520px;
+    margin:20px auto 30px;
+    font-size:16px;
+}
+
+/* TEDDY */
+
+.teddy{
+    font-size:95px;
+    animation:bounce 2.5s ease-in-out infinite;
+    filter:drop-shadow(0 8px 8px #a94f6830);
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-10px) rotate(2deg);
+    }
+}
+
+/* BUTTON */
+
+button{
+    border:none;
+    background:#b95b78;
+    color:white;
+    padding:15px 27px;
+    border-radius:50px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 10px 25px #b95b7835;
+    transition:.25s;
+    margin:8px;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px #b95b7845;
+}
+
+button.secondary{
+    background:white;
+    color:#a34e69;
+    border:1px solid #edbdca;
+}
+
+/* FLOWERS */
+
+.flowers{
+    font-size:32px;
+    margin:10px;
+}
+
+/* LOVE CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
+    margin:25px 0;
+}
+
+.love-card{
+    background:#ffffffc9;
+    border:1px solid #f2cbd6;
+    border-radius:22px;
+    padding:20px 12px;
+    cursor:pointer;
+    min-height:100px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 22px #9b536815;
+    transition:.25s;
+}
+
+.love-card:hover{
+    transform:translateY(-3px);
+}
+
+.love-card strong{
+    color:#a34d68;
+}
+
+.love-card span{
+    display:none;
+    font-size:13px;
+    margin-top:9px;
+    line-height:1.5;
+}
+
+.love-card.open span{
+    display:block;
+}
+
+/* MEMORIES */
+
+.memory{
+    text-align:left;
+    background:#fffafcc7;
+    padding:22px;
+    border-radius:23px;
+    margin:13px 0;
+    border-left:5px solid #d88da3;
+    box-shadow:0 6px 18px #9b536812;
+}
+
+.memory h3{
+    color:#a34e68;
+    margin-bottom:5px;
+}
+
+/* OPTION CARDS */
+
+.option{
+    background:#fffafd;
+    border:1px solid #f0ccd6;
+    border-radius:22px;
+    padding:20px;
+    margin:12px 0;
+    box-shadow:0 7px 18px #9b536810;
+}
+
+.big{
+    font-size:30px;
+}
+
+/* ENVELOPE */
+
+.envelope{
+    width:min(350px,90%);
+    height:210px;
+    background:#e6a0b4;
+    margin:30px auto;
+    border-radius:12px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 15px 30px #a94f6830;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+
+    border-left:175px solid transparent;
+    border-right:175px solid transparent;
+    border-top:110px solid #d888a0;
+}
+
+.envelope span{
+    font-size:45px;
+    z-index:2;
+}
+
+/* LETTER */
+
+.letter{
+    display:none;
+    background:#fffdf9;
+    padding:28px;
+    border-radius:18px;
+    text-align:left;
+    line-height:1.9;
+    box-shadow:0 12px 30px #70495720;
+}
+
+.letter.show{
+    display:block;
+}
+
+/* FINAL */
+
+.final-text{
+    font-size:18px;
+    line-height:2;
+}
+
+/* SECRET */
+
+.secret{
+    margin-top:20px;
+    font-size:20px;
+    animation:appear .6s ease;
+}
+
+.hidden{
+    display:none;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .love-card{
+        padding:16px 8px;
+    }
+
+    .envelope:before{
+        border-left-width:45vw;
+        border-right-width:45vw;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- FLOATING HEARTS -->
+
+<div class="hearts" id="hearts"></div>
+
+
+<!-- SCREEN 1 -->
+
+<section class="screen active" id="screen1">
+
+<div class="container">
+
+<div class="flowers">
+🌷 🌸 🌷
+</div>
+
+<div class="teddy">
+🧸
+</div>
+
+<h1>Hey Cutuu...</h1>
+
+<p class="subtitle">
+
+I made a tiny little something for you.  
+<br>
+
+But there's one rule...
+
+<br><br>
+
+<strong>You have to click EVERYTHING. 👀</strong>
+
+</p>
+
+<button onclick="nextScreen(2)">
+Open your surprise 🎀
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCREEN 2 -->
+
+<section class="screen" id="screen2">
+
+<div class="container">
+
+<div class="teddy">
+🧸🌷
+</div>
+
+<h2>
+Things I adore about you
+</h2>
+
+<p class="subtitle">
+Tap the cards one by one.  
+I have some things to confess.
+</p>
+
+
+<div class="grid">
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your smile ♡</strong>
+<span>
+Literally unfair. One smile and my brain forgets what it was doing.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your eyes 👀</strong>
+<span>
+I could stare at them for way longer than I should admit.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your goofy side 😂</strong>
+<span>
+Probably one of my favourite versions of you. Please never become normal.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your name</strong>
+<span>
+Kshitij. I don't know why but I just LOVE saying it.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your hands 🤍</strong>
+<span>
+Especially those cute little gestures you make with them while talking.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your smell</strong>
+<span>
+Somehow it just feels like you. And yes, I notice it.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your caring nature 🫶</strong>
+<span>
+The little things you do mean much more to me than you realise.
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your humour</strong>
+<span>
+Even when the jokes are questionable... unfortunately I still laugh. 😭
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Your mimicry 😭</strong>
+<span>
+Why are you so unnecessarily good at being ridiculous?
+</span>
+</div>
+
+
+<div class="love-card" onclick="openCard(this)">
+<strong>Just... you.</strong>
+<span>
+All the tiny things that make you YOU. That's the real answer.
+</span>
+</div>
+
+
+</div>
+
+
+<button onclick="nextScreen(3)">
+Okay, there's more →
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCREEN 3 -->
+
+<section class="screen" id="screen3">
+
+<div class="container">
+
+<div class="flowers">
+🌸 🌷 🌸
+</div>
+
+<h2>
+Our little memories
+</h2>
+
+<p class="subtitle">
+Maybe they're simple moments...
+but they're some of my favourites.
+</p>
+
+
+<div class="memory">
+
+<h3>
+🌊 Rishikesh
+</h3>
+
+<p>
+One trip, so many tiny moments that I would happily replay.
+</p>
+
+</div>
+
+
+<div class="memory">
+
+<h3>
+🍟 McDonald's dates
+</h3>
+
+<p>
+Apparently McDonald's becomes romantic when it's with you. Who knew? 😭
+</p>
+
+</div>
+
+
+<div class="memory">
+
+<h3>
+🏍️ Bike rides
+</h3>
+
+<p>
+Just you, me, the road... and me pretending I'm completely fearless. 😂
+</p>
+
+</div>
+
+
+<br>
+
+<p>
+Maybe they're not the biggest moments in the world...
+<br>
+
+<strong>
+but they're some of my favourite moments because they have YOU in them.
+</strong>
+
+🤍
+
+</p>
+
+
+<button onclick="nextScreen(4)">
+Next little surprise →
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCREEN 4 -->
+
+<section class="screen" id="screen4">
+
+<div class="container">
+
+<div class="teddy">
+🧸
+</div>
+
+<h2>
+If you were...
+</h2>
+
+
+<div class="option">
+
+<div class="big">🌷</div>
+
+<strong>A flower</strong>
+
+<p>
+Something soft and warm that I'd always want close.
+</p>
+
+</div>
+
+
+<div class="option">
+
+<div class="big">🏡</div>
+
+<strong>A place</strong>
+
+<p>
+Somewhere I'd always want to return to.
+</p>
+
+</div>
+
+
+<div class="option">
+
+<div class="big">🫂</div>
+
+<strong>A feeling</strong>
+
+<p>
+Comfort. The kind that feels like home.
+</p>
+
+</div>
+
+
+<div class="option">
+
+<div class="big">🎵</div>
+
+<strong>A song</strong>
+
+<p>
+<i>Dil Haareya — Arijit Singh</i>
+<br>
+because somehow it reminds me of you.
+</p>
+
+</div>
+
+
+<button onclick="nextScreen(5)">
+One more surprise 💌
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCREEN 5 -->
+
+<section class="screen" id="screen5">
+
+<div class="container">
+
+<div class="flowers">
+🌹 🌷 🌹
+</div>
+
+<h2>
+Open when you miss me
+</h2>
+
+<p class="subtitle">
+Go on, Cutuu...
+<br>
+Click the envelope. 💌
+</p>
+
+
+<div class="envelope" onclick="openLetter()">
+
+<span>
+💌
+</span>
+
+</div>
+
+
+<div class="letter" id="letter">
+
+<p>
+<strong>Hi Cutuu, 🧸</strong>
+</p>
+
+<br>
+
+<p>
+If you're reading this because you miss me...
+then congratulations.
+</p>
+
+<p>
+I miss you too.
+</p>
+
+<p>
+Now come here and give me a hug.
+</p>
+
+<p>
+Since you can't actually do that right now,
+consider this your virtual one. 🫂
+</p>
+
+<p>
+Okay bye.
+<br>
+I love you. 🤍
+</p>
+
+</div>
+
+
+<button id="letterButton"
+class="hidden"
+onclick="nextScreen(6)">
+
+Okay... there's a real letter now →
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+<!-- SCREEN 6 -->
+
+<section class="screen" id="screen6">
+
+<div class="container">
+
+<div class="teddy">
+🧸💗
+</div>
+
+<h2>
+For my Kshitij
+</h2>
+
+
+<div class="letter" style="display:block">
+
+
+<p>
+Kshitij,
+</p>
+
+<br>
+
+
+<p>
+I don't think I always say it properly,
+but I really, really love having you in my life.
+</p>
+
+<br>
+
+
+<p>
+It's not just the big things.
+It's your smile, your eyes, your goofy side,
+your stupidly funny jokes, your mimicry,
+your caring little gestures...
+even those tiny things you do with your hands while talking.
+</p>
+
+<br>
+
+
+<p>
+Somehow all these little pieces of you
+became some of my favourite things.
+</p>
+
+<br>
+
+
+<p>
+And I love that with you,
+I can be silly, annoying, dramatic
+and completely myself.
+</p>
+
+<br>
+
+
+<p>
+You make ordinary things feel special —
+whether it's a McDonald's date,
+a bike ride,
+or a whole trip to Rishikesh.
+</p>
+
+<br>
+
+
+<p>
+So today I just wanted to remind you that
+<strong>you are very, very loved.</strong>
+</p>
+
+<br>
+
+
+<p>
+Happy Boyfriend's Day, Cutuu. 🤍
+</p>
+
+<br>
+
+<p style="text-align:center;font-size:20px">
+
+<strong>
+— your girl 🌷
+</strong>
+
+</p>
+
+
+</div>
+
+
+<button onclick="nextScreen(7)">
+Last one, promise 👀
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- FINAL SCREEN -->
+
+<section class="screen" id="screen7">
+
+<div class="container">
+
+<div class="flowers">
+🌷 🌸 🌷
+</div>
+
+
+<div class="teddy">
+🧸
+</div>
+
+
+<h2>
+Happy Boyfriend's Day, Cutuu ♡
+</h2>
+
+
+<p class="final-text">
+
+Thank you for being my favourite person to annoy,
+
+<br>
+
+my favourite person to laugh with,
+
+<br>
+
+and my favourite person to make memories with.
+
+</p>
+
+
+<br>
+
+
+<p class="final-text">
+
+<strong>
+I love you, Kshitij.
+</strong>
+
+🤍
+
+</p>
+
+
+<br>
+
+
+<button onclick="showSecret()">
+
+P.S. one more thing...
+
+</button>
+
+
+<p id="secret" class="secret hidden">
+
+<strong>
+You're stuck with me.
+</strong>
+
+<br>
+
+Sorry. 😌🧸💗
+
+</p>
+
+
+<br><br>
+
+
+<p style="font-size:13px;color:#9b747f">
+
+🎵 Our little song:
+<br>
+
+<i>Dil Haareya — Arijit Singh</i>
+
+</p>
+
+
+<br>
+
+
+<p style="font-size:12px;color:#a7868e">
+
+Made with an unreasonable amount of love
+<br>
+and a little bit of pagalpan. ♡
+
+</p>
+
+
+</div>
+
+</section>
+
+
+
+<script>
+
+/* SCREEN NAVIGATION */
+
+function nextScreen(number){
+
+    document
+    .querySelectorAll(".screen")
+    .forEach(screen=>{
+        screen.classList.remove("active");
+    });
+
+    document
+    .getElementById("screen"+number)
+    .classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* LOVE CARDS */
+
+function openCard(card){
+
+    card.classList.toggle("open");
+
+}
+
+
+/* LETTER */
+
+function openLetter(){
+
+    document
+    .getElementById("letter")
+    .classList.add("show");
+
+    document
+    .getElementById("letterButton")
+    .classList.remove("hidden");
+
+}
+
+
+/* SECRET MESSAGE */
+
+function showSecret(){
+
+    document
+    .getElementById("secret")
+    .classList.remove("hidden");
+
+}
+
+
+/* FLOATING HEARTS */
+
+const heartSymbols=[
+    "♡",
+    "♥",
+    "🌸",
+    "🌷",
+    "💕",
+    "✿"
+];
+
+
+for(let i=0;i<25;i++){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    heart.innerHTML=
+    heartSymbols[
+        Math.floor(
+            Math.random()*heartSymbols.length
+        )
+    ];
+
+    heart.style.left=
+    Math.random()*100+"%";
+
+    heart.style.fontSize=
+    (12+Math.random()*18)+"px";
+
+    heart.style.animationDuration=
+    (7+Math.random()*8)+"s";
+
+    heart.style.animationDelay=
+    (-Math.random()*10)+"s";
+
+    document
+    .getElementById("hearts")
+    .appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
